@@ -1,4 +1,5 @@
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -27,21 +28,23 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.local/bin:$PATH"
 
 
+# key bindings
+
+# Use CTRL + E to accept the suggestion (standard 'End of line' behavior)
+bindkey '^E' autosuggest-accept
+
+
 alias ..="cd .."
 alias ...="cd ../.."
+
 alias tp="cd ~/temp/"
-alias sd="cd ~/temp/side"
-alias llc="cd ~/temp/side/llc"
-alias tfe="cd ~/temp/side/llc/tepehome-fe"
-alias gfe="cd ~/temp/side/llc/gencallar-fe"
-alias dlp="cd ~/temp/dlp/trade-service-documents"
-alias dlpr="cd ~/temp/dlp/trade-service-documents && npm run dev"
-alias dlpc="cd ~/temp/dlp/trade-service-documents && cursor ."
-alias dlpi="cd ~/temp/dlp/trade-service-documents && npm install --force"
+alias sd="cd ~/temp/sd"
+alias pers="cd ~/temp/sd/personal"
+alias extensions="cd ~/temp/sd/personal/chrome-extensions"
+
+alias dlp="cd ~/temp/dlp/documents"
 alias uikit="cd ~/temp/dlp/uikit"
-alias uir="cd ~/temp/dlp/uikit && npm run dev"
 alias l="ls -lahp"
-alias c="clear"
 alias h="history"
 alias ql='qlmanage -p "$1" >& /dev/null'
 alias myip="curl -s https://ifconfig.me | pbcopy"
@@ -49,20 +52,30 @@ alias showfiles="defaults write com.apple.finder AppleShowAllFiles -bool true &&
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias src="source ~/.zshrc"
+
 alias cpu="ps auxf | sort -nr -k 3 | head -10"
 alias empty="rm -rf ~/.Trash/*"
-alias gs="git status"
+
+#  git aliasses 
+alias gst="git status"
 alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git pull"
+# stash changes
+alias gs="git stash"
+alias gsa="git stash apply"
+alias gsl="git stash list"
+
+
 alias rm="rm -iv"
+alias remove="rm -rf"
 alias rf="rm -rf"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias path='echo $PATH | tr ":" "\n"'
 alias a="agent"
 alias we="curl 'wttr.in/Baku?format=Today:+%c+%t\nTomorrow:+%c+%t'"
-alias intercept="mitmweb -s dlp_in.py"
+alias intercept="mitmweb  --mode local -s ~/dlp_in.py"
 alias cintercept="cursor --wait ~/dlp_in.py"
 
 # Find and open in VSCode
@@ -70,7 +83,6 @@ fcode() { find . -name "*$1*" | head -1 | xargs code; }
 
 # Wifi password for current network
 alias wifipw="security find-generic-password -wa $(networksetup -getairportnetwork en0 | cut -d' ' -f4)"
-
 # zconf cursor
 alias zconf="cursor --wait ~/.zshrc"
 
@@ -95,7 +107,6 @@ add-alias() {
 
 # kill port
 k() { lsof -ti tcp:$1 | xargs kill -9; }
-c
 
 
 
