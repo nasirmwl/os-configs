@@ -14,6 +14,15 @@ else
     echo "Homebrew is already installed"
 fi
 
+# git 
+if ! command -v git &> /dev/null; then
+    echo "Git is not installed"
+    echo "Installing Git..."
+    brew install git
+else
+    echo "Git is already installed"
+fi
+
 # install node js
 # check if node is installed
 if ! command -v node &> /dev/null; then
