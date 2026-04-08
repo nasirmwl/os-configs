@@ -82,3 +82,8 @@ if ! command -v zsh-syntax-highlighting &> /dev/null; then
 else
     echo "Zsh-syntax-highlighting is already installed"
 fi
+
+# get from env variables
+git config --global user.name "$GIT_USER_NAME"
+git config --global user.email "$GIT_USER_EMAIL"
+ssh-keygen -t ed25519 -C "$GIT_USER_EMAIL"
