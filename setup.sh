@@ -60,3 +60,25 @@ if ! command -v mitmproxy &> /dev/null; then
 else
     echo "Mitmproxy is already installed"
 fi
+
+
+# zsh-autosuggestions
+# check if zsh-autosuggestions is installed
+if ! command -v zsh-autosuggestions &> /dev/null; then
+    echo "Zsh-autosuggestions is not installed"
+    echo "Installing Zsh-autosuggestions..."
+    brew install zsh-autosuggestions
+else
+    echo "Zsh-autosuggestions is already installed"
+fi
+
+
+# zsh-syntax-highlighting
+# check if zsh-syntax-highlighting is installed
+if ! command -v zsh-syntax-highlighting &> /dev/null; then
+    echo "Zsh-syntax-highlighting is not installed"
+    echo "Installing Zsh-syntax-highlighting..."
+    brew install zsh-syntax-highlighting
+else
+    echo "Zsh-syntax-highlighting is already installed"
+fi
